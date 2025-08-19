@@ -187,17 +187,17 @@ function Engine.GetSpeedEfficiency()
 	if Memory.Mario.XSlideSpeed + Memory.Mario.ZSlideSpeed > 0 then
 		return MoreMaths.Round(
 		Engine.GetDistMoved() /
-		math.abs(math.sqrt(MoreMaths.DecodeDecToFloat(Memory.Mario.XSlideSpeed) ^ 2 +
-		MoreMaths.DecodeDecToFloat(Memory.Mario.ZSlideSpeed) ^ 2)) * 100, 5)
+		math.sqrt(MoreMaths.DecodeDecToFloat(Memory.Mario.XSlideSpeed) ^ 2 +
+		MoreMaths.DecodeDecToFloat(Memory.Mario.ZSlideSpeed) ^ 2) * 100, 5)
 	else
 		return 0
 	end
 end
 
 function Engine.GetDistMoved()
-	return math.sqrt((math.abs(MoreMaths.DecodeDecToFloat(Memory.PreviousPos.X)) - math.abs(MoreMaths.DecodeDecToFloat(Memory.Mario.X))) ^
+	return math.sqrt((MoreMaths.DecodeDecToFloat(Memory.PreviousPos.X) - MoreMaths.DecodeDecToFloat(Memory.Mario.X)) ^
 	2 +
-	(math.abs(MoreMaths.DecodeDecToFloat(Memory.PreviousPos.Z)) - math.abs(MoreMaths.DecodeDecToFloat(Memory.Mario.Z))) ^
+	(MoreMaths.DecodeDecToFloat(Memory.PreviousPos.Z) - MoreMaths.DecodeDecToFloat(Memory.Mario.Z)) ^
 	2)
 end
 
